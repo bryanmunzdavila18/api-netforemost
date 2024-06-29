@@ -9,10 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import fs from "fs";
 import formidable from "formidable";
-import { MongoClient } from "mongodb";
+import { MongoClient, ServerApiVersion } from "mongodb";
 // Connection URL
-const url = "mongodb://localhost:27017";
-const client = new MongoClient(url);
+const url = "mongodb+srv://root:supersecretpassword@atlascluster.p8ymqty.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster";
+const client = new MongoClient(url, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    },
+});
 // Database Name
 const dbName = "netforemost";
 export const UploadArticles = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

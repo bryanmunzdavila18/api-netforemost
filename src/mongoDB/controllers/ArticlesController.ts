@@ -1,11 +1,18 @@
 import fs from "fs";
 import { ArticlesType } from "../utils/Enums";
 import formidable, { errors as formidableErrors } from "formidable";
-import { MongoClient } from "mongodb";
+import { MongoClient, ServerApiVersion } from "mongodb";
 
 // Connection URL
-const url = "mongodb://localhost:27017";
-const client = new MongoClient(url);
+const url =
+  "mongodb+srv://root:supersecretpassword@atlascluster.p8ymqty.mongodb.net/?retryWrites=true&w=majority&appName=AtlasCluster";
+const client = new MongoClient(url, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
 
 // Database Name
 const dbName = "netforemost";
